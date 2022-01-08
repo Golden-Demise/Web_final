@@ -56,10 +56,10 @@ $signin_btn.click(function (e) {
             console.log("Sign In Complete", res);
             alert("sign in");
             if (email == "admin@gmail.com") {
-                window.location = "src/admin.html";
+                window.location = "admin.html";
             }
             else{
-                window.location = "src/demo.html";
+                window.location = "demo.html";
             }
         })
         .catch(err => {
