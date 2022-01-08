@@ -10,4 +10,4 @@ to sign in as admin
 account:admin@gmail.com
 password:123456
 
-in admin you can add can, delete phrase
+in admin you can add can, delete phrase.
