@@ -31,7 +31,7 @@ async function getcan(){
   $All.text("我的罐罐："+String(can));
   $total.text("Total："+String(can));
 }
-setInterval(getcan,100);
+getcan();
 
 $moreCan.on('click',async(event)=>{
   event.preventDefault();
