@@ -64,6 +64,7 @@ $moreCan.on('click',async(event)=>{
   client_all_can+=1;
   $clientAll.text("總貢獻的罐罐："+String(client_all_can));
   db.collection("user").doc(user.uid).set({
+    id:user.email,
     can_all:client_all_can
   });
   
