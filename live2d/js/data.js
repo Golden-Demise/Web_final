@@ -71,5 +71,8 @@ $talkbtn.on('click',async(event) => {
     console.log(talk);
     $talkinput.text("");
     $talkinput.val("");
+    setTimeout(function(){
+      window.location.reload();
+    },5000);
   }
 })

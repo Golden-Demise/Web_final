@@ -19,6 +19,7 @@ $clear.on('click',async(event)=>{
       can:global_can,
       talk:talk
     });
+    getcan();
 })
 
 $add100.on('click',async(event)=>{
@@ -37,6 +38,7 @@ $add100.on('click',async(event)=>{
       can:global_can,
       talk:talk
     });
+    getcan();
 })
 
 $add1000.on('click',async(event)=>{
@@ -55,6 +57,7 @@ $add1000.on('click',async(event)=>{
       can:global_can,
       talk:talk
     });
+    getcan();
 })
 
 $add10000.on('click',async(event)=>{
@@ -73,6 +76,7 @@ $add10000.on('click',async(event)=>{
       can:global_can,
       talk:talk
     });
+    getcan();
 })
 const $scTableBody=$("#scTableBody");
 
@@ -80,6 +84,7 @@ const $scTableBody=$("#scTableBody");
 async function getsc(){
     const todoDocs = await cat.get();
     const {can,talk} = todoDocs.data();
+    $scTableBody.empty();
     for (let i=0; i<talk.length; i++){
         const row=`
             <tr>
