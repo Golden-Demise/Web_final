@@ -31,14 +31,17 @@ async function getcan(){
   const {can,talk} = todoDocs.data();
 
   const user = firebase.auth().currentUser;
-  const cl = db.collection("user").doc(user.uid);
-  const ctemp=await cl.get();
-  const {can_all}=ctemp.data();
-  $clientAll.text("總貢獻的罐罐："+String(can_all));
-  
+  if(user.uid!=null){
+    const cl = db.collection("user").doc(user.uid);
+    const ctemp=await cl.get();
+    const {can_all}=ctemp.data();
+    $clientAll.text("總貢獻的罐罐："+String(can_all));
+  }
+  else{
+    $clientAll.text("總貢獻的罐罐："+String(can));
+  }
   console.log(can);
   $All.text("我的罐罐："+String(can));
-  $total.text("Total："+String(can));
 }
 getcan();
 

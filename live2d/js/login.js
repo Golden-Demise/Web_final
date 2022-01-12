@@ -23,15 +23,14 @@ $signup_btn.click(function (e) {
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
             console.log("Sign up", res);
-            alert("sign up complete");
             const data={
+                id:res.user.email,
                 can_all:0
             };
-            db.collection("user").doc(res.uid).add(data)
-                .then(()=>{
-                    window.location.reload();
-                })
-                .catch(err => console.log("err", err));
+            console.log(res.user.uid);
+
+            db.collection("user").doc(res.user.uid).set(data);
+            alert("sign up complete");
         })
         .catch(err => {
             if (err.code == "auth/wrong-password") {
