@@ -11,6 +11,8 @@ var $signup_btn=$("#signup_btn"),
 //sign out form
 var $signout_btn=$("#signout_btn");
 
+var $hello=$("#hello");
+
 $signup_btn.click(function (e) {
     e.preventDefault();
     // When sign up form submitted
@@ -24,7 +26,7 @@ $signup_btn.click(function (e) {
         .then(res => {
             console.log("Sign up", res);
             const data={
-                id:res.user.email,
+                id:String(res.user.email).split("@")[0],
                 can_all:0
             };
             console.log(res.user.uid);

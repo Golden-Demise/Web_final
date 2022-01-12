@@ -36,6 +36,7 @@ async function getcan(){
     const ctemp=await cl.get();
     const {can_all}=ctemp.data();
     $clientAll.text("總貢獻的罐罐："+String(can_all));
+    $hello.text(String(user.email).split("@")[0]+"!!Welcome!!來跟牠互動吧")
   }
   else{
     $clientAll.text("總貢獻的罐罐："+String(can));
@@ -64,7 +65,7 @@ $moreCan.on('click',async(event)=>{
   client_all_can+=1;
   $clientAll.text("總貢獻的罐罐："+String(client_all_can));
   db.collection("user").doc(user.uid).set({
-    id:user.email,
+    id:String(user.email).split("@")[0],
     can_all:client_all_can
   });
   
