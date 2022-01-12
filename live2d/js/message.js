@@ -20,13 +20,6 @@ String.prototype.renderTip = function (context) {
     return renderTip(this, context);
 };
 
-var re = /x/;
-console.log(re);
-re.toString = function() {
-    showMessage('喵！！', 5000);
-    return '';
-};
-
 $(document).on('copy', function (){
     showMessage('想要複製帶走的話，罐罐先拿來', 5000);
 });
@@ -81,7 +74,7 @@ initTips();
             } else if (now > 19 && now <= 21) {
                 text = '整天只知道工作，回家後還不給我罐罐！！';
             } else if (now > 21 && now <= 23) {
-                text = '罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐罐';
+                text = '罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！罐罐呢！';
             } else {
                 text = '還沒睡的話，給個罐罐吧';
             }
