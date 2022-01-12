@@ -36,7 +36,7 @@ async function initTips(){
     const {can,talk} = todoDocs.data();
     $.ajax({
         cache: true,
-        url: `live2d/message.json`,
+        url: `../message.json`,
         dataType: "json",
         success: function (result){
             $.each(result.mouseover, function (index, tips){
