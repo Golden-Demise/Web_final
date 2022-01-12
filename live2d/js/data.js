@@ -16,10 +16,12 @@ const $moreCan=$("#moreCan");
 const $All=$("#All");
 const $total=$("#total");
 const $client=$("#client");
+const $clientAll=$("#clientAll");
 const $talkbtn=$("#talkbtn");
 const $talkinput=$("#talkinput");
 
 var global_can=0;
+var client_all_can=0;
 var client_can=0;
 
 const cat = db.collection("cat").doc("0");
@@ -27,11 +29,19 @@ const cat = db.collection("cat").doc("0");
 async function getcan(){
   const todoDocs = await cat.get();
   const {can,talk} = todoDocs.data();
+
+  const user = firebase.auth().currentUser;
+  const cl = db.collection("user").doc(user.uid);
+  const ctemp=await cl.get();
+  const {can_all}=ctemp.data();
+  $clientAll.text("總貢獻的罐罐："+String(can_all));
+  
   console.log(can);
   $All.text("我的罐罐："+String(can));
   $total.text("Total："+String(can));
 }
 getcan();
+
 
 $moreCan.on('click',async(event)=>{
   event.preventDefault();
@@ -40,6 +50,20 @@ $moreCan.on('click',async(event)=>{
   const {can,talk} = todoDocs.data();
   global_can=can;
   global_can+=1;
+  
+  const user = firebase.auth().currentUser;
+  const cl = db.collection("user").doc(user.uid);
+  console.log(user.uid);
+  const ctemp=await cl.get();
+  const {can_all}=ctemp.data();
+  console.log(can_all);
+  client_all_can=can_all;
+  client_all_can+=1;
+  $clientAll.text("總貢獻的罐罐："+String(client_all_can));
+  db.collection("user").doc(user.uid).set({
+    can_all:client_all_can
+  });
+  
   console.log(can);
   //console.log(talk);
   client_can+=1;

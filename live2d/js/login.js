@@ -17,7 +17,6 @@ $signup_btn.click(function (e) {
     console.log("Ready for sign up");
     const email = $account_signup.val();
     const password = $password_signup.val();
-    console.log(email, password);
     //firebase sign in method
     firebase
         .auth()
@@ -25,6 +24,14 @@ $signup_btn.click(function (e) {
         .then(res => {
             console.log("Sign up", res);
             alert("sign up complete");
+            const data={
+                can_all:0
+            };
+            db.collection("user").doc(res.uid).add(data)
+                .then(()=>{
+                    window.location.reload();
+                })
+                .catch(err => console.log("err", err));
         })
         .catch(err => {
             if (err.code == "auth/wrong-password") {
